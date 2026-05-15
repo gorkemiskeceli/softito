@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Çakmatify</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            height: 100vh;
+
+            background:
+            linear-gradient(rgba(10,10,30,.65), rgba(20,20,25,.65)),
+            url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ13Ao1UG1MYLoJPNUgXagZkyCaSIFM9jD-jw&s");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-box{
+            width: 850px;
+            height: 430px;
+
+            display: flex;
+
+            background: rgba(255,255,255,0.10);
+
+            border-radius: 20px;
+            overflow: hidden;
+
+            backdrop-filter: blur(10px);
+
+            box-shadow: 0 0 30px rgba(0,0,0,0.4);
+        }
+
+        .left-side{
+            width: 50%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+            padding: 40px;
+
+            color: white;
+
+            background: rgba(255,255,255,0.05);
+        }
+
+        .left-side h1{
+            font-size: 46px;
+            margin-bottom: 25px;
+
+            letter-spacing: 2px;
+        }
+
+        .left-side span{
+            width: 80%;
+
+            text-align: center;
+            line-height: 28px;
+
+            font-size: 16px;
+
+            color: rgba(255,255,255,0.8);
+        }
+
+        .right-side{
+            width: 50%;
+
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+
+            padding: 50px;
+
+            color: white;
+        }
+
+        .right-side h1{
+            font-size: 34px;
+            margin-bottom: 35px;
+        }
+
+        form{
+            width: 100%;
+        }
+
+        .input-group{
+            margin-bottom: 20px;
+        }
+
+        .input-group input{
+            width: 100%;
+            padding: 15px;
+
+            border: none;
+            border-radius: 12px;
+
+            outline: none;
+
+            background: rgba(255,255,255,0.15);
+
+            color: white;
+            font-size: 15px;
+        }
+
+        .input-group input::placeholder{
+            color: rgba(255,255,255,0.7);
+        }
+
+        .input-group input:focus{
+            border: 1px solid #ff4d6d;
+        }
+
+        .login-btn{
+            width: 100%;
+            padding: 15px;
+
+            border: none;
+            border-radius: 12px;
+
+            background: #ff4d6d;
+
+            color: white;
+
+            font-size: 16px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: .3s;
+        }
+
+        .login-btn:hover{
+            background: #ff3355;
+            transform: scale(1.02);
+        }
+
+        .options{
+            margin-top: 10px;
+
+            display: flex;
+            justify-content: space-between;
+
+            font-size: 13px;
+
+            color: rgba(255,255,255,0.75);
+        }
+
+        .signup{
+            margin-top: 30px;
+
+            color: rgba(255,255,255,0.75);
+        }
+
+        .signup a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .signup a:hover{
+            text-decoration: underline;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="login-box">
+
+        <div class="left-side">
+
+            <h1>Çakmatify</h1>
+
+            <span>
+                Müzik dünyasından çıkış yap!
+                Güncel platformların en çakmasına hazır mısın?
+                Emin ol kredi kartı bilgilerini çalıcaz (^_^)
+            </span>
+
+        </div>
+
+        <div class="right-side">
+
+            <h1>Hayatının Hatasını Yap!</h1>
+
+            <form>
+
+                <div class="input-group">
+                    <input type="email"
+                    placeholder="Emailinizi giriniz"
+                    required>
+                </div>
+
+                <div class="input-group">
+                    <input type="password"
+                    placeholder="Şifrenizi giriniz">
+                </div>
+
+                <div class="input-group">
+                    <button type="submit" class="login-btn">
+                        Devam Et
+                    </button>
+                </div>
+
+            </form>
+
+            <div class="options">
+                <span>Beni hatırla</span>
+                <span>Şifremi unuttum</span>
+            </div>
+
+            <div class="signup">
+                Hesabın yok mu?
+                <a href="">Ücretsiz Kayıt Ol</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
