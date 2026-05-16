@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomePage</title>
+
+    <style>
+        *{
+            margin: 0%;
+            padding: 0%;
+            box-sizing: border-box;
+        }
+
+        body{
+            height: 100vh;
+            background:
+            linear-gradient(rgba(10,10,30,.65), rgba(20,20,25,.65)),
+            url(kamp.jpeg);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        nav{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px,50px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+
+        #logo img{
+            height: 40px;
+            width: auto;
+            border-radius: 8px;
+        }
+        
+        #menu{
+            display: flex;
+            gap: 30px;
+        }
+
+        #menu a{
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        #menu a:hover{
+            color: #4ade80;
+        }
+
+        #hero{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: larger;
+            
+            height: 20vh;
+
+        }
+
+        .container{
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        #Kamp\ alanları{
+            padding: 80px 0;
+        }
+
+        #Kamp\ alanları h2{
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 40px;
+            color: white;
+        }
+
+        .Kamp-grid{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .kart{
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border-radius: 15px;
+            padding: 25px;
+            color: white;
+            transition: transfrom 0.3s;
+        }
+
+        .kart:hover{
+            transform: translateY(-5px);
+        }
+
+        .kart h4{
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .kart .konum{
+            font-size: 14px;
+            color: #ccc;
+            margin-bottom: 5px;
+        }
+
+        .kart.puan{
+            font-size: 14px;
+            margin-left: 15px;
+        }
+
+        .kart .Özellikler {
+            font-size: 14px;
+            color: #ddd;
+            margin-bottom: 20px;
+            padding-left: 20px;
+            list-style-position: inside;
+        }
+
+        .kart .Özellikler li {
+            margin-bottom: 5px;
+        }
+
+        .button {
+             display: inline-block;
+            padding: 10px 20px;
+            background: #4ade80;
+            color: #0a0a1e;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .button:hover {
+            background: #22c55e;
+        }
+
+        #neden-biz{
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 80px;
+        }
+
+        #neden-biz h2{
+            text-align: center;
+            font-size: 32px;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+       
+
+        .özellik-kart{
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border-radius: 15px;
+            padding: 25px;
+            color: white;
+            transition: transfrom 0.3s;
+        }
+
+        .özellik-kart:hover{
+            transform: translateY(-5px);
+        }
+        
+        .özellik-grid{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        #iletisim{
+            padding: 80px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            display: grid;
+            grid-template-columns: 1fr 1fr; 
+            gap: 50px;
+            max-width: 1200px;
+            border-radius: 15px;
+            margin: 0 auto;
+            color: white;
+        }
+
+        #iletisim address{
+            font-style: normal;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        #iletisim address a{
+            color: #4ade80;
+            text-decoration: none;
+        }
+
+        #iletisim address a:hover{
+            text-decoration: underline;
+        }
+
+        #iletisim label{
+            display: block;
+            margin-bottom: 8px;
+            color: white;
+        }
+
+        #iletisim input,
+        #iletisim textarea{
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            outline: none;
+        }
+
+        #iletisim input:focus,
+        #iletisim textarea:focus{
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        #iletisim input::placeholder,
+        #iletisim textarea ::placeholder{
+            color: #aaa;
+        }
+        
+
+        .footer-alanı{
+            padding: 30px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        .footer-alanı footer{
+            text-align: center;
+        }
+
+        .footer-alanı p{
+            margin-bottom: 8px;
+        }
+
+        .footer-alanı strong{
+            color: white;
+        }
+
+
+    </style>
+
+
+</head>
+<body>
+    <nav>
+        <div id="logo">
+            <a href="#">
+                <img src="kampırjampır.jpeg" alt="Kamp keşif">
+            </a>
+        </div>
+        <div id="menu">
+            <a href="#Kamp alanları">Kamp alanları</a>
+            <a href="#hakkımızda">Hakkımızda</a>
+            <a href="#iletişim">İletişim</a>
+        </div>
+    </nav>
+ <section id="hero">
+        <div class="hero-content">
+            <h1 style="color: white;">Türkiye'nin En Güzel Alanlarını Keşfet</h1>
+            <p style="color: white;">Doğayla iç içe unutulmaz bir deneyim için doğru yerdesin</p>
+
+        </div>
+    </section>
+
+    <br>
+
+    <section id="Kamp alanları">
+        <div class="container">
+            <h2>Popüler Kamp alanları</h2>
+            <div class="Kamp-grid">
+                <div class="kart">
+                    <h4 >Şile Kamp</h4>
+                    <p class="konum">📍 Konum: Şile</p>
+                    <p class="puan">⭐ 4.5</p>
+                    <ol class="Özellikler">
+                        Özellikler
+                        <li>Denize yakın kamp alanları</li>
+                        <li>Çadır ve karavan alanları</li>
+                        <li>Duş, elektrik ve WC gibi imkanlar mevcut</li>
+                    </ol>
+                    <a href="https://www.silekamp.com/?utm_source=chatgpt.com" target="_blank" class="button">Kamp alanı</a>
+                </div>
+                <div class="kart">
+                    <h4>Rumeli Feneri Karavan Kamp</h4>
+                    <p class="konum">📍 Konum: Sarıyer, Rumeli Feneri</p>
+                    <p class="puan">⭐ 4.4</p>
+                    <ol class="Özellikler">
+                        Özellikler
+                        <li>Karadeniz manzaralı</li>
+                        <li>Sessiz ve doğa ağırlıklı ortam</li>
+                        <li>Karavan kampı için oldukça tercih ediliyor</li>
+                        <li>Şehir merkezine yakın olduğu için ulaşım rahat</li>
+                    </ol>
+                    <a href="https://www.instagram.com/camprumelifeneri/?utm_source=chatgpt.com" target="_blank" class="button">Kamp alanı</a>
+                </div>
+                <div class="kart">
+                    <h4>Polenezköy Nature Park</h4>
+                    <p class="konum">📍 Konum: Beykoz</p>
+                    <p class="puan">⭐ 4.4</p>
+                    <ol class="Özellikler">
+                        Özellikler
+                        <li>Orman içi atmosfer</li>
+                        <li>Trekking + kamp kombinasyonu için çok iyi</li>
+                        <li>Daha sakin ve "doğa hissi" yüksek</li>
+                        <li>Fotoğraf ve yürüyüş için harika rotalar var.</li>
+                    </ol>
+                    <a href="https://www.instagram.com/polonezkoytabiatpark/" target="_blank" class="button">Kamp alanı</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <br>
+
+   <section id="neden-biz">
+        <div class="container">
+            <h2>Neden Kamp keşif?</h2>
+            <div class="özellik-grid">
+                <div class="özellik-kart">
+                    <span class="özellik-ikon">🗺️</span>
+                    <h4>Güvenli rotalar</h4>
+                    <p>Deneyimli kamplar tarafından önerilen, güvenli rotaları bir araya getirdik.</p>
+                </div>
+                <div class="özellik-kart">
+                    <span class="özellik-ikon">🏕️</span>
+                    <h4>Detaylı Rehber</h4>
+                    <p>Her kamp alanı için ekipman listesi, ulaşım ve konaklama bilgileri.</p>
+                </div>
+                <div class="özellik-kart">
+                    <span class="özellik-ikon">💬</span>
+                    <h4>Kampçı Yorumları</h4>
+                    <p>Gerçek kampçıların kararını oku, kararını ver</p>
+                </div>
+            </div>
+        </div>
+   </section>
+
+    <br>
+
+   <section id="iletisim">
+        <address>
+            Bize bu mail üzerinden ulaşabilirsiniz: <br>
+            <a href="mailto:mgiskec@gmail.com">mgiskec@gmail.com</a>
+            <br>
+            Bizi ziyaret edin: <br>
+            Çıkmaz yolun sonundan Duvarı atlayarak bize ulaşabilirsiniz.
+        </address>
+        <br><br>
+        <form>
+            <label>Email</label>
+            <br><br>
+            <input type="email" placeholder="Email adresinizigiriniz" required>
+            <br><br>
+            <label>Bize mesaj gönderin.</label>
+            <br><br>
+            <textarea rows="10" cols="50" placeholder="Mesajınızı buraya girebilirsiniz."></textarea>
+        </form>
+    
+   </section>
+
+   <br>
+
+   <section class="footer-alanı">
+    <div class="container">
+        <footer>
+            <p>© 2026 <strong>Muhammet Görkem İSKEÇELİ</strong></p>
+            <p>Tüm hakları saklıdır.</p>
+        </footer>
+    </div>
+   </section>
+
+
+    </body>
+</html>
