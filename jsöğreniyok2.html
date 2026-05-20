@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Dersi</title>
+</head>
+
+<body>
+    <h1>JavaScript Öğreniyorum 1.gün</h1>
+    <br>
+    <button onclick="mesajGoster()">
+        Tıkla
+    </button>
+    <br>
+    <button onclick="toplama()">
+        Sayıları Topla
+    </button>
+    <br>
+
+    <script>
+        //Consola yazdırma işlemi
+        console.log('Merhaba Dünya')
+        //String Değişken tanımlama ve consola yazdırma 
+        let isim = 'Akif ';
+        console.log(isim);
+
+        //Int değişken tanımlama ve consola yazdırma 
+        let yas2 = 28;
+        console.log(yas2)
+
+        //Kullanıcının girdiği 2 değeri toplayıp consola yazdırma
+        let sayi1 = 10;
+        let sayi2 = 20;
+        let topla = sayi1 + sayi2;
+        console.log('İki değerin toplamı:' + topla)
+
+        //Sayfaya scriptle yazı yazdırma
+        document.write('Merhaba JavaScript')
+        //bir butona tıklanınca fonksiyonla consola yazı yazdırma
+        function mesajGoster() {
+            alert("Butona Tıklandı")
+        }
+        //Kullanıcıdan değişkene değer alma
+        let isim2 = prompt('Adınızı Giriniz');
+        console.log('2. isminiz:' + isim2);
+
+        //koşul ile kişinin yaşının reşitlik kontrolü sağlama ve uyarı mesajı atma
+        let yas = 20;
+        if (yas <= 18) {
+            alert('Reşit değilsiniz sayfayı dikkatli kullanın');
+        }
+        else { }
+
+        //Döngü ile belirlenen değere kadar değer arttırma
+        for (let i = 1; i <= 5; i++) {
+            console.log(i);
+        }
+
+        function toplama() {
+            let toplamSayi1 = Number(prompt('Birinci Sayıyı Giriniz'));
+            let toplamSayi2 = Number(prompt('İkinci sayıyı girin'));
+            let toplamSonuc = toplamSayi1 + toplamSayi2;
+            alert('sonuç:' + toplamSonuc);
+        }
+    </script>
+</body>
+
+</html>

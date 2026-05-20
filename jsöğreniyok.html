@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Hesap Makinesi</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #111827;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .box {
+            background: #1f2937;
+            padding: 30px;
+            border-radius: 15px;
+            width: 350px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background: #2563eb;
+            color: white;
+            cursor: pointer;
+        }
+
+        #sonuc {
+            margin-top: 20px;
+            font-size: 22px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h1>BMI Hesaplama</h1>
+        <input type="number" id="kilo" placeholder="Kilonuzu Giriniz">
+        <input type="number" id="boy" placeholder="Boyunuzu giriniz(metre)">
+        <button onclick="hesapla()">
+            Hesapla
+        </button>
+        <div id="sonuc"></div>
+    </div>
+    <script>
+        function hesapla() {
+            let kilo = Number(document.getElementById("kilo").value);
+            let boy = Number(document.getElementById("boy").value);
+            let bmi = kilo / (boy * boy);
+            let durum = "";
+            if (bmi < 18.5) {
+                durum = "zayıfsın"
+            }
+            else if (bmi >= 18.5 && bmi < 25) {
+                durum = "Normalsiniz"
+            }
+            else if (bmi >= 25 && bmi < 30) {
+                durum = "kilolusun"
+            }
+            else { durum = "obez" }
+            document.getElementById("sonuc").innerHTML = "BMI:" + bmi.toFixed(2) + "<br>" + durum;
+        }
+    </script>
+</body>
+
+</html>​
