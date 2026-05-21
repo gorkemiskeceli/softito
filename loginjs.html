@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Kontrollü Login</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(120deg, #4facfe, #00f2fe);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            width: 300px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .checkbox-area {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #4facfe;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #2196f3;
+        }
+
+        #message {
+            text-align: center;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Giriş sayfası</h2>
+        <form id="loginForm">
+            <input type="email" id="email" placeholder="Eposta adresinizi giriniz">
+            <input type="password" id="password" placeholder="Şifrenizi Giriniz">
+            <div class="checkbox-area">
+                <input type="checkbox" id="remember">
+                <label for="remember">Kvkk</label>
+            </div>
+            <button type="submit">Giriş yap</button>
+            <p id="message"></p>
+        </form>
+    </div>
+    <script>
+        const form = document.getElementById("loginForm");
+        const message = document.getElementById("message");
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value.trim();
+            const kvkk = document.getElementById("remember");
+
+            const correctEmail = "alperen@gmail.com";
+            const correctPassword = "123456";
+
+            if (!kvkk.checked) {
+                message.style.color = "orenge";
+                message.innerHTML = "⚠️Lütfen Kvkk Metnini onaylayınız";
+                return;
+            }
+
+            if (email === correctEmail && password === correctPassword) {
+                message.style.color = "green";
+                message.innerHTML = "✅ Giriş başarılı! Anasayfaya yönlendiriliyorsunuz";
+                setTimeout(() => {
+                    alert('Anasayfaya yönlendirildi');
+                }, 1000);
+            }
+            else {
+                message.style.color = "red";
+                message.innerHTML = "❌ Eposta veya parolayı yanlış giridiniz lütfen kontrol ediniz"
+            }
+        })
+
+    </script>
+</body>
+
+</html>

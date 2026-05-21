@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Not Ortalaması Hesaplama</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #111827;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+        }
+
+        .card {
+            background: #1f2937;
+            padding: 30px;
+            border-radius: 15px;
+            width: 350px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            background: #2563eb;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        #sonuc {
+            margin-top: 20px;
+            font-size: 22px;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <h1>Not Ortalaması</h1>
+        <input type="number" id="vize" placeholder="Vize Notunuzu Giriniz">
+        <input type="number" id="final" placeholder="Final notunuzu Giriniz">
+        <button onclick="hesapla()">
+            Hesapla
+        </button>
+        <div id="sonuc">
+            Sonuç Burada Görünecek
+        </div>
+
+    </div>
+    <script>
+        function hesapla() {
+            let vize = Number(document.getElementById("vize").value);
+            let final = Number(document.getElementById("final").value);
+            let sonucun = (vize * 0.4) + (final * 0.6);
+            let harfNotu = "";
+            switch (true) {
+                case sonucun >= 90:
+                    harfNotu = "AA";
+                    break;
+                case sonucun >= 80:
+                    harfNotu = "BA";
+                    break;
+                case sonucun >= 70:
+                    harfNotu = "BB";
+                    break;
+                case sonucun >= 60:
+                    harfNotu = "CB";
+                    break;
+                case sonucun >= 50:
+                    harfNotu = "CC";
+                    break;
+                default:
+                    harfNotu = "FF";
+            }
+            document.getElementById("sonuc").innerHTML =
+                `   
+            Sonucunuz: ${sonucun.toFixed(2)}
+            <br>
+            Harf Notu: ${harfNotu}
+            `;
+        }
+    </script>
+</body>
+
+</html>
