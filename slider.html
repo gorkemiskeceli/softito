@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width-device-width, initial-scale=1.0">
+    <title>Slider</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #111;
+        }
+
+        .slider {
+            position: relative;
+            width: 900px;
+            height: 500px;
+            overflow: hidden;
+            border-radius: 15px;
+        }
+
+        .slides {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        /* Buttons */
+        button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.3);
+            border: none;
+            font-size: 30px;
+            cursor: pointer;
+            padding: 10px 15px;
+            border-radius: 50%;
+            color: white;
+        }
+
+        .prev {
+            left: 15px;
+        }
+
+        .next {
+            right: 15px;
+        }
+
+        /* Dots */
+        .dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background: white;
+            transform: scale(1.2);
+        }
+
+        /* Progress */
+        .progress-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 4px;
+            width: 0%;
+            background: white;
+            transition: width 4s linear;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slider">
+        <div class="slides">
+
+            <div class="slide active">
+                <img src="https://picsum.photos/id/1015/900/500">
+            </div>
+            <div class="slide">
+                <img src="https://picsum.photos/id/1016/900/500" />
+            </div>
+            <div class="slide">
+                <img src="https://picsum.photos/id/1025/900/500" />
+            </div>
+        </div>
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
+        <div class="dots"></div>
+        <div class="progress-bar"></div>
+    </div>
+    <script>
+        const slides = document.querySelectorAll(".slide");
+        const prevBtn = document.querySelector(".prev");
+        const nextBtn = document.querySelector(".next");
+        const dotsContainer = document.querySelector(".dots");
+        const progressBar = document.querySelector(".progress-bar");
+
+        let index = 0;
+        let startX = 0;
+        let endX = 0;
+        let interval;
+
+        // --------------------
+        // SLIDE GÖSTER
+        // --------------------
+        function showSlide(i) {
+            slides.forEach(slide => slide.classList.remove("active"));
+            slides[i].classList.add("active");
+
+            updateDots();
+            resetProgress();
+        }
+
+        // --------------------
+        // NEXT
+        // --------------------
+        function nextSlide() {
+            index++;
+            if (index >= slides.length) index = 0;
+            showSlide(index);
+        }
+
+        // --------------------
+        // PREV
+        // --------------------
+        function prevSlide() {
+            index--;
+            if (index < 0) index = slides.length - 1;
+            showSlide(index);
+        }
+
+        // --------------------
+        // DOTS OLUŞTUR
+        // --------------------
+        slides.forEach((_, i) => {
+            const dot = document.createElement("div");
+            dot.classList.add("dot");
+
+            dot.addEventListener("click", () => {
+                index = i;
+                showSlide(index);
+            });
+
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll(".dot");
+
+        // --------------------
+        // DOT UPDATE
+        // --------------------
+        function updateDots() {
+            dots.forEach(d => d.classList.remove("active"));
+            dots[index].classList.add("active");
+        }
+
+        // --------------------
+        // PROGRESS BAR
+        // --------------------
+        function resetProgress() {
+            progressBar.style.transition = "none";
+            progressBar.style.width = "0%";
+
+            setTimeout(() => {
+                progressBar.style.transition = "width 4s linear";
+                progressBar.style.width = "100%";
+            }, 50);
+        }
+
+        // --------------------
+        // AUTO PLAY
+        // --------------------
+        function startAutoPlay() {
+            interval = setInterval(nextSlide, 4000);
+        }
+
+        function stopAutoPlay() {
+            clearInterval(interval);
+        }
+
+        // --------------------
+        // SWIPE
+        // --------------------
+        const slider = document.querySelector(".slider");
+
+        slider.addEventListener("touchstart", (e) => {
+            startX = e.touches[0].clientX;
+        });
+
+        slider.addEventListener("touchend", (e) => {
+            endX = e.changedTouches[0].clientX;
+
+            if (startX - endX > 50) nextSlide();
+            else if (endX - startX > 50) prevSlide();
+        });
+
+        // --------------------
+        // BUTTONS
+        // --------------------
+        nextBtn.addEventListener("click", nextSlide);
+        prevBtn.addEventListener("click", prevSlide);
+
+        // --------------------
+        // INIT
+        // --------------------
+        showSlide(index);
+        startAutoPlay();
+    </script>
+</body>
+
+</html>​
